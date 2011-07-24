@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <title> apalancat</title>
-  <meta name="author" content="Marc B">
+  <meta name="author" content="Marc">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -33,7 +33,7 @@
   <header><hgroup>
   <h1><a href="/">apalancat</a></h1>
   
-    <h2>Nothing useful.</h2>
+    <h2>a blog</h2>
   
 </hgroup>
 </header>
@@ -70,12 +70,12 @@
 
   <div class="entry-content"><p>zsh allows Filename Generation and Pattern Matching (Globbing) using square brackets and other characters (explained in the <a href="http://zsh.sourceforge.net/Guide/zshguide05.html">zsh guide</a>, section 5.9).</p>
 
-<p>That may cause problem with shell commands that use square brackets, such as some rake tasks.</p>
+<p>That may cause problem with shell commands that use square brackets, such as some rake tasks. The error message is a cryptic <code>zsh: no matches found</code>.</p>
 
-<p>The solution, found in the <a href="http://zsh.sourceforge.net/FAQ/zshfaq03.html">zsh FAQ</a> (section 3.4), is simply a line in ~/.zshrc that disables globbing for a single command:</p>
+<p>The solution, found in the <a href="http://zsh.sourceforge.net/FAQ/zshfaq03.html">zsh FAQ</a> (section 3.4), is simply adding a line in ~/.zshrc that disables globbing for a single command:</p>
 
-<pre><code>alias rake="noglob rake"
-</code></pre>
+<div><figure role=code><pre><code>alias rake="noglob rake"</code></pre></figure></div>
+
 </div>
   <footer>
     <a rel="full-article" href="/blog/2011/07/24/zsh-no-matches-found">Read on &rarr;</a>
@@ -117,7 +117,7 @@
     </div>
   </div>
   <footer><p>
-  Copyright &copy; 2011 - Marc B -
+  Copyright &copy; 2011 - Marc -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 </footer>
