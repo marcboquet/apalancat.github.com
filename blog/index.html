@@ -5,10 +5,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Category: terminal - apalancat</title>
+  <title> apalancat</title>
   <meta name="author" content="Marc">
-  
-    <meta name="description" content="Category: terminal"/>
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -56,35 +54,43 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article>
+      <div class="blog-index">
+
+
+
+  <article>
+    
   <header>
-    <h1 class="entry-title">Category: Terminal</h1>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/24/zsh-no-matches-found">Zsh: No Matches Found</a></h1>
+    
     
   </header>
-  <div id="blog-archives" class="category">
 
 
+  <div class="entry-content"><p>zsh allows Filename Generation and Pattern Matching (Globbing) using square brackets and other characters (explained in the <a href="http://zsh.sourceforge.net/Guide/zshguide05.html">zsh guide</a>, section 5.9).</p>
 
-  
-  <h2>2011</h2>
+<p>That may cause problem with shell commands that use square brackets, such as some rake tasks. The error message is a cryptic <code>zsh: no matches found</code>.</p>
 
-<article>
-  
-<h1><a href="/blog/2011/07/24/zsh-no-matches-found">zsh: no matches found</a></h1>
-<time datetime="2011-07-24 16:55:00 +0200" pubdate><span class='month'>Jul</span> <span class='day'>24</span> <span class='year'>2011</span></time>
+<p>The solution, found in the <a href="http://zsh.sourceforge.net/FAQ/zshfaq03.html">zsh FAQ</a> (section 3.4), is simply adding a line in ~/.zshrc that disables globbing for a single command:</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/terminal/'>terminal</a></span>
-</footer>
-
-
-</article>
+<div><figure role=code><pre><code>alias rake="noglob rake"</code></pre></figure></div>
 
 </div>
+  <footer>
+    <a rel="full-article" href="/blog/2011/07/24/zsh-no-matches-found">Read on &rarr;</a>
+  </footer>
 
-  
-</article>
+
+  </article>
+
+<nav role="pagination">
+  <div>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</nav>
 
 </div>
 

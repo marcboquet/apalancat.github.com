@@ -1,0 +1,13 @@
+*                  { margin:0; padding:0; font-family:"helvetica neue",Helvetica,Arial,sans-serif; }
+img                { border:none; }
+body               { margin: 3em;background-color:#eee; color:#888;padding-bottom:3em; font-weight: 200; width: 800px; }
+#header            { margin-top: 100px;font-size:4em; font-weight:200;}
+.color-cat         { color:#666;font-weight:100; }
+a, a:visited       { color:#666; outline-style: none;}
+#header a          { color:#888;text-decoration: none; cursor:-moz-grab;}
+#header a:hover    { color:#666; }
+#header a:hover .color-cat    { color:#888; }
+
+#info              { cursor:-moz-grab; }
+
+h1                 { margin-top:100px; font-weight: 100; }

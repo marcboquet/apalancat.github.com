@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title></title>
-  <link href="http://apalancat.github.com/atom.xml" rel="self"/>
-  <link href="http://apalancat.github.com/"/>
-  <updated>2011-07-24T20:49:48+02:00</updated>
-  <id>http://apalancat.github.com/</id>
+  <link href="http://apalan.cat/atom.xml" rel="self"/>
+  <link href="http://apalan.cat/"/>
+  <updated>2011-07-24T23:26:15+02:00</updated>
+  <id>http://apalan.cat/</id>
   <author>
     <name>Marc</name>
     
@@ -14,9 +14,9 @@
   
   <entry>
     <title>zsh: no matches found</title>
-    <link href="http://apalancat.github.com/blog/2011/07/24/zsh-no-matches-found"/>
+    <link href="http://apalan.cat/blog/2011/07/24/zsh-no-matches-found"/>
     <updated>2011-07-24T16:55:00+02:00</updated>
-    <id>http://apalancat.github.com/blog/2011/07/24/zsh-no-matches-found</id>
+    <id>http://apalan.cat/blog/2011/07/24/zsh-no-matches-found</id>
     <content type="html">&lt;p&gt;zsh allows Filename Generation and Pattern Matching (Globbing) using square brackets and other characters (explained in the &lt;a href=&quot;http://zsh.sourceforge.net/Guide/zshguide05.html&quot;&gt;zsh guide&lt;/a&gt;, section 5.9).&lt;/p&gt;
 
 &lt;p&gt;That may cause problem with shell commands that use square brackets, such as some rake tasks. The error message is a cryptic &lt;code&gt;zsh: no matches found&lt;/code&gt;.&lt;/p&gt;
