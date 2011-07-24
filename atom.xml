@@ -4,20 +4,27 @@
   <title></title>
   <link href="http://apalancat.github.com/atom.xml" rel="self"/>
   <link href="http://apalancat.github.com/"/>
-  <updated>2011-07-24T16:56:32+02:00</updated>
+  <updated>2011-07-24T17:58:30+02:00</updated>
   <id>http://apalancat.github.com/</id>
   <author>
-    <name>Your Name</name>
+    <name>Marc Boquet</name>
     
   </author>
 
   
   <entry>
-    <title>Test</title>
-    <link href="http://apalancat.github.com/blog/2011/07/24/test"/>
+    <title>zsh: no matches found</title>
+    <link href="http://apalancat.github.com/blog/2011/07/24/zsh-no-matches-found"/>
     <updated>2011-07-24T16:55:00+02:00</updated>
-    <id>http://apalancat.github.com/blog/2011/07/24/test</id>
-    <content type="html">&lt;p&gt;Hey&lt;/p&gt;
+    <id>http://apalancat.github.com/blog/2011/07/24/zsh-no-matches-found</id>
+    <content type="html">&lt;p&gt;zsh allows Filename Generation and Pattern Matching (Globbing) using square brackets and other characters (explained in the &lt;a href=&quot;http://zsh.sourceforge.net/Guide/zshguide05.html&quot;&gt;zsh guide&lt;/a&gt;, section 5.9).&lt;/p&gt;
+
+&lt;p&gt;That may cause problem with shell commands that use square brackets, such as some rake tasks.&lt;/p&gt;
+
+&lt;p&gt;The solution, found in the &lt;a href=&quot;http://zsh.sourceforge.net/FAQ/zshfaq03.html&quot;&gt;zsh FAQ&lt;/a&gt; (section 3.4), is simply a line in ~/.zshrc that disables globbing for a single command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;alias rake=&quot;noglob rake&quot;
+&lt;/code&gt;&lt;/pre&gt;
 </content>
   </entry>
   
