@@ -7,8 +7,6 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <meta name="description" content="Desenvolupament web i d'aplicacions per a iPhone / Web and iPhone developer from Barcelona." />
   <meta name="keywords" content="apalancat,iPod,iPhone,iPod Touch,iPhone 3G,desenvolupament web,disseny,programació,web development" />
-  
-  <script src='http://www.google.com/jsapi' type='text/javascript'></script>
 
   
   <link rel="stylesheet" href="/stylesheets/home.css" type="text/css" media="screen" title="style"/>
@@ -33,36 +31,17 @@
   </h1>
 
 <div id='header'>
-  <a href="#" onclick="resize();return false;">
+  <a href="#" onclick="return false;">
   <span id="apalan">apalan</span><span id="cat" class='color-cat'>cat</span>
   </a>
 </div>
-<div id="info" onclick="resize();return false;">web &amp; iOS developer</div>
+<div id="info" onclick="return false;">web &amp; iOS developer</div>
 <div>from Barcelona</div>
 <p id="correu">marc<img src="/images/arroba.gif"/ title="@" alt="@">apalan<span style="display:none;">null</span>.cat</p>
 
 <p>twitter <a id="twitter" href="http://twitter.com/apalancat" title="@apalancat">@apalancat</a></p>
 
 <!--<p><a id="blog" href="/blog/" title="a blog">blog</a></p>&#8211;>
-
-<script type='text/javascript'>
-  //<![CDATA[
-    google.load("jquery", "1.3.2");
-    google.load("jqueryui", "1.7.2");
-    resize = function(){
-      rand = (Math.random()*1+0.8)
-      $("#twitter").animate({ fontSize: rand+"em" });
-      //$("#info").animate({ fontSize: (2.7-rand)+"em" });
-      //$("#header").animate({ fontSize: (Math.random()*2+2.8)+"em" });
-      };
-  //]]>
-</script>
-<script>
-  //<![CDATA[
-    $("#header").draggable();
-    $("#info").draggable();
-  //]]>
-</script>
 
 </body>
 </html>
