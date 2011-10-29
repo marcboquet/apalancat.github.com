@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: terminal | apalancat]]></title>
+  <link href="http://apalan.cat/blog/categories/terminal/atom.xml" rel="self"/>
+  <link href="http://apalan.cat/"/>
+  <updated>2011-10-29T17:50:02+02:00</updated>
+  <id>http://apalan.cat/</id>
+  <author>
+    <name><![CDATA[Marc]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[zsh: no matches found]]></title>
+    <link href="http://apalan.cat/blog/2011/07/24/zsh-no-matches-found/"/>
+    <updated>2011-07-24T16:55:00+02:00</updated>
+    <id>http://apalan.cat/blog/2011/07/24/zsh-no-matches-found</id>
+    <content type="html"><![CDATA[<p>zsh allows Filename Generation and Pattern Matching (Globbing) using square brackets and other characters (explained in the <a href="http://zsh.sourceforge.net/Guide/zshguide05.html">zsh guide</a>, section 5.9).</p>
+
+<p>That may cause problem with shell commands that use square brackets, such as some rake tasks. The error message is a cryptic <code>zsh: no matches found</code>.</p>
+
+<p>The solution, found in the <a href="http://zsh.sourceforge.net/FAQ/zshfaq03.html">zsh FAQ</a> (section 3.4), is simply adding a line in ~/.zshrc that disables globbing for a single command:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>alias rake="noglob rake"</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>apalancat</title>
+  <title>Using Font Suitcase fonts in iOS - apalancat</title>
   <meta name="author" content="Marc">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://apalan.cat">
+  <link rel="canonical" href="http://apalan.cat/blog/2011/10/29/font-suitcase-fonts-in-ios">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -72,15 +72,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/10/29/font-suitcase-fonts-in-ios/">Using Font Suitcase Fonts in iOS</a></h1>
+      <h1 class="entry-title">Using Font Suitcase Fonts in iOS</h1>
     
     
       <p class="meta">
@@ -98,7 +95,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Since iOS 3.2 it&#8217;s very easy to use <a href="http://blog.beefyapps.com/2010/06/custom-fonts-in-ios-4/">custom fonts</a> in iPhone or iPad Apps. Unfortunately, this method only works with certain font formats (.otf, .ttf), and not with others such as the extension-less, <em>Font Suitcase</em> or <em>PostScript Type 1 outline</em>. But if the font you need happens to be in some other format, there&#8217;s some extra work to do.</p>
+<div class="entry-content"><p>Since iOS 3.2 it&#8217;s very easy to use <a href="http://blog.beefyapps.com/2010/06/custom-fonts-in-ios-4/">custom fonts</a> in iPhone or iPad Apps. Unfortunately, this method only works with certain font formats (.otf, .ttf), and not with others such as the extension-less, <em>Font Suitcase</em> or <em>PostScript Type 1 outline</em>. But if the font you need happens to be in some other format, there&#8217;s some extra work to do.</p>
 
 <p>First, extract the actual font from the resources fork of the file. <a href="http://fondu.sourceforge.net/">Fondu</a> can help with that. You can install fondu using <a href="http://mxcl.github.com/homebrew/">homebrew</a> (<code>brew install fondu</code>) or following this <a href="http://rockonflash.wordpress.com/2011/02/03/extracting-true-type-fonts-from-font-suitcase-files/">easy steps</a> to install from source.</p>
 
@@ -121,59 +118,52 @@
 
 <p>Possible resource for .dfont files (I haven&#8217;t tried it): <a href="http://peter.upfold.org.uk/projects/dfontsplitter">DfontSplitter</a></p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/07/24/zsh-no-matches-found/">Zsh: No Matches Found</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Marc</span></span>
+
+      
 
 
 
 
   
 
-<time datetime="2011-07-24T16:55:00+02:00" pubdate>Jul 24<span>th</span>, 2011</time>
-        
-      </p>
+<time datetime="2011-10-29T16:59:00+02:00" pubdate>Oct 29<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ios/'>iOS</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
+      <div class="sharing">
+  
+  
+  
+</div>
 
-
-  <div class="entry-content"><p>zsh allows Filename Generation and Pattern Matching (Globbing) using square brackets and other characters (explained in the <a href="http://zsh.sourceforge.net/Guide/zshguide05.html">zsh guide</a>, section 5.9).</p>
-
-<p>That may cause problem with shell commands that use square brackets, such as some rake tasks. The error message is a cryptic <code>zsh: no matches found</code>.</p>
-
-<p>The solution, found in the <a href="http://zsh.sourceforge.net/FAQ/zshfaq03.html">zsh FAQ</a> (section 3.4), is simply adding a line in ~/.zshrc that disables globbing for a single command:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>alias rake="noglob rake"</span></code></pre></td></tr></table></div></figure>
-
-
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/07/24/zsh-no-matches-found/" title="Previous Post: zsh: no matches found">&laquo; zsh: no matches found</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -198,6 +188,7 @@
 
   
 </aside>
+
 
     </div>
   </div>

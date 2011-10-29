@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: iOS | apalancat]]></title>
+  <link href="http://apalan.cat/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://apalan.cat/"/>
+  <updated>2011-10-29T17:50:02+02:00</updated>
+  <id>http://apalan.cat/</id>
+  <author>
+    <name><![CDATA[Marc]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using Font Suitcase fonts in iOS]]></title>
+    <link href="http://apalan.cat/blog/2011/10/29/font-suitcase-fonts-in-ios/"/>
+    <updated>2011-10-29T16:59:00+02:00</updated>
+    <id>http://apalan.cat/blog/2011/10/29/font-suitcase-fonts-in-ios</id>
+    <content type="html"><![CDATA[<p>Since iOS 3.2 it's very easy to use <a href="http://blog.beefyapps.com/2010/06/custom-fonts-in-ios-4/">custom fonts</a> in iPhone or iPad Apps. Unfortunately, this method only works with certain font formats (.otf, .ttf), and not with others such as the extension-less, <em>Font Suitcase</em> or <em>PostScript Type 1 outline</em>. But if the font you need happens to be in some other format, there's some extra work to do.</p>
+
+<p>First, extract the actual font from the resources fork of the file. <a href="http://fondu.sourceforge.net/">Fondu</a> can help with that. You can install fondu using <a href="http://mxcl.github.com/homebrew/">homebrew</a> (<code>brew install fondu</code>) or following this <a href="http://rockonflash.wordpress.com/2011/02/03/extracting-true-type-fonts-from-font-suitcase-files/">easy steps</a> to install from source.</p>
+
+<p>Once fondu is installed we need to extract the font resources:</p>
+
+<pre><code>&gt; fondu path/to/fontfile/..namedfork/rsrc
+# or
+&gt; fondu path/to/fontfile/..namedfork
+# or
+&gt; fondu path/to/fontfile
+</code></pre>
+
+<p>Some people <a href="http://rockonflash.wordpress.com/2011/02/03/extracting-true-type-fonts-from-font-suitcase-files/#comment-5353">have found</a> that they have to remove the <code>/..namedfork/rsrc</code> or the <code>/rsrc</code> part for it to work, It may depend on the way the font is packaged.</p>
+
+<p>If the extracted font is a .ttf or .otf file, then you are done! In some cases it will be a .pfb or .bdf file, which will have to be converted. There's a lot of resources for that, I used <a href="http://www.freefontconverter.com/">freefontconverter.com</a> and worked perfectly.</p>
+
+<p>--</p>
+
+<p>More info on <a href="http://www.peachpit.com/articles/article.aspx?p=31702&amp;seqNum=9">Fonts in Mac OS X</a></p>
+
+<p>Possible resource for .dfont files (I haven't tried it): <a href="http://peter.upfold.org.uk/projects/dfontsplitter">DfontSplitter</a></p>
+]]></content>
+  </entry>
+  
+</feed>
