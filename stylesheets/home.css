@@ -1,6 +1,6 @@
 *                  { margin:0; padding:0; font-family:"helvetica neue",Helvetica,Arial,sans-serif; }
 img                { border:none; }
-body               { margin: 3em;background-color:#eee; color:#888;padding-bottom:3em; font-weight: 200; }
+body               { margin: 3em;background-color:#eee; color:#888;padding-bottom:3em; font-weight: 200; width: 800px; }
 #header            { margin-top: 100px;font-size:4em; font-weight:200;}
 .color-cat         { color:#666;font-weight:100; }
 a, a:visited       { color:#666; outline-style: none;}
