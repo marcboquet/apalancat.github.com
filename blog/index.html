@@ -9,7 +9,7 @@
   <meta name="author" content="Marc">
 
   
-  <meta name="description" content="Since iOS 3.2 it&#8217;s very easy to use custom fonts in iPhone or iPad Apps. Unfortunately, this method only works with certain font formats (.otf &hellip;">
+  <meta name="description" content="Paymill is a Stripe clone available for those of us in Europe. There&#8217;s some controversy with the cloning side of things, but either way this is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -45,7 +45,7 @@
 
 </head>
 
-<body   >
+<body    class="collapse-sidebar sidebar-footer" >
   <header role="banner"><hgroup>
   <h1><a href="/">apalancat</a></h1>
   
@@ -77,6 +77,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/03/paymill-subscriptions-in-ruby-on-rails/">Paymill Subscriptions in Ruby on Rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-03T20:23:00+01:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://www.paymill.com/">Paymill</a> is a <a href="https://stripe.com/">Stripe</a> clone available for those of us in Europe. There&#8217;s <a href="http://thenextweb.com/apps/2012/08/14/introducing-paymill-the-stripe-ripoff-samwer-brothers-rocket-internet/">some</a> <a href="http://gigaom.com/europe/rocket-apes-stripe-and-takes-its-clone-factory-to-new-countries/">controversy</a> with the cloning side of things, but either way this is a long awaited opportunity for web businesses here in the Old Continent.</p>
+
+<p><code>paymill-ruby</code> (<a href="https://github.com/dkd/paymill-ruby">github</a>) is a gem for communicating with paymill&#8217;s API. Right now it&#8217;s in a very early stage, but it works fine for the basics.
+To install it: <code>gem install paymill</code></p>
+
+<p>In order to create subscriptions the steps are simple, the only thing needed is a paymill test account.</p>
+
+<p>The paymill control panel lets you create Offers, which are how they call Subscription Plans. Once created, the plans can be used to subscribe clients via the API. The names beginning with &#8216;offer_&#8217; are the plan IDs that will be needed to setup the subscription with a client and credit card.</p>
+
+<p>Check out the <a href="https://github.com/apalancat/paymill-rails">sample app</a> if you want to give it a try.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -192,6 +237,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/03/paymill-subscriptions-in-ruby-on-rails/">Paymill subscriptions in Ruby on Rails</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2011/10/29/font-suitcase-fonts-in-ios/">Using Font Suitcase fonts in iOS</a>

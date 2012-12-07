@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>zsh: no matches found - apalancat</title>
+  <title>Paymill subscriptions in Ruby on Rails - apalancat</title>
   <meta name="author" content="Marc">
 
   
-  <meta name="description" content="zsh allows Filename Generation and Pattern Matching (Globbing) using square brackets and other characters (explained in the zsh guide, section 5.9). &hellip;">
+  <meta name="description" content="Paymill is a Stripe clone available for those of us in Europe. There&#8217;s some controversy with the cloning side of things, but either way this is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://apalan.cat/blog/2011/07/24/zsh-no-matches-found/">
+  <link rel="canonical" href="http://apalan.cat/blog/2012/12/03/paymill-subscriptions-in-ruby-on-rails/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Zsh: No Matches Found</h1>
+      <h1 class="entry-title">Paymill Subscriptions in Ruby on Rails</h1>
     
     
       <p class="meta">
@@ -96,24 +96,23 @@
   
 
 
-<time datetime="2011-07-24T16:55:00+02:00" pubdate data-updated="true">Jul 24<span>th</span>, 2011</time>
+<time datetime="2012-12-03T20:23:00+01:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>zsh allows Filename Generation and Pattern Matching (Globbing) using square brackets and other characters (explained in the <a href="http://zsh.sourceforge.net/Guide/zshguide05.html">zsh guide</a>, section 5.9).</p>
+<div class="entry-content"><p><a href="https://www.paymill.com/">Paymill</a> is a <a href="https://stripe.com/">Stripe</a> clone available for those of us in Europe. There&#8217;s <a href="http://thenextweb.com/apps/2012/08/14/introducing-paymill-the-stripe-ripoff-samwer-brothers-rocket-internet/">some</a> <a href="http://gigaom.com/europe/rocket-apes-stripe-and-takes-its-clone-factory-to-new-countries/">controversy</a> with the cloning side of things, but either way this is a long awaited opportunity for web businesses here in the Old Continent.</p>
 
-<p>That may cause problem with shell commands that use square brackets, such as some rake tasks. The error message is a cryptic <code>zsh: no matches found</code>.</p>
+<p><code>paymill-ruby</code> (<a href="https://github.com/dkd/paymill-ruby">github</a>) is a gem for communicating with paymill&#8217;s API. Right now it&#8217;s in a very early stage, but it works fine for the basics.
+To install it: <code>gem install paymill</code></p>
 
-<p>The solution, found in the <a href="http://zsh.sourceforge.net/FAQ/zshfaq03.html">zsh FAQ</a> (section 3.4), is simply adding a line in ~/.zshrc that disables globbing for a single command:</p>
+<p>In order to create subscriptions the steps are simple, the only thing needed is a paymill test account.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>alias rake="noglob rake"</span></code></pre></td></tr></table></div></figure>
+<p>The paymill control panel lets you create Offers, which are how they call Subscription Plans. Once created, the plans can be used to subscribe clients via the API. The names beginning with &#8216;offer_&#8217; are the plan IDs that will be needed to setup the subscription with a client and credit card.</p>
 
-
-
+<p>Check out the <a href="https://github.com/apalancat/paymill-rails">sample app</a> if you want to give it a try.</p>
 </div>
 
 
@@ -136,14 +135,8 @@
   
 
 
-<time datetime="2011-07-24T16:55:00+02:00" pubdate data-updated="true">Jul 24<span>th</span>, 2011</time>
+<time datetime="2012-12-03T20:23:00+01:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2012</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/terminal/'>terminal</a>
-  
-</span>
 
 
     </p>
@@ -157,8 +150,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2011/10/29/font-suitcase-fonts-in-ios/" title="Previous Post: Using Font Suitcase fonts in iOS">&laquo; Using Font Suitcase fonts in iOS</a>
       
-        <a class="basic-alignment right" href="/blog/2011/10/29/font-suitcase-fonts-in-ios/" title="Next Post: Using Font Suitcase fonts in iOS">Using Font Suitcase fonts in iOS &raquo;</a>
       
     </p>
   </footer>
