@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <title>apalancat</title>
-  <meta name="author" content="Marc">
+  <meta name="author" content="Marc Boquet">
 
   
   <meta name="description" content="Paymill is a Stripe clone available for those of us in Europe. There&#8217;s some controversy with the cloning side of things, but either way this is &hellip;">
@@ -49,7 +49,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/">apalancat</a></h1>
   
-    <h2>a blog.</h2>
+    <h2>Marc Boquet - the blog.</h2>
   
 </hgroup>
 
@@ -108,14 +108,114 @@
 
   <div class="entry-content"><p><a href="https://www.paymill.com/">Paymill</a> is a <a href="https://stripe.com/">Stripe</a> clone available for those of us in Europe. There&#8217;s <a href="http://thenextweb.com/apps/2012/08/14/introducing-paymill-the-stripe-ripoff-samwer-brothers-rocket-internet/">some</a> <a href="http://gigaom.com/europe/rocket-apes-stripe-and-takes-its-clone-factory-to-new-countries/">controversy</a> with the cloning side of things, but either way this is a long awaited opportunity for web businesses here in the Old Continent.</p>
 
-<p><code>paymill-ruby</code> (<a href="https://github.com/dkd/paymill-ruby">github</a>) is a gem for communicating with paymill&#8217;s API. Right now it&#8217;s in a very early stage, but it works fine for the basics.
-To install it: <code>gem install paymill</code></p>
+<p>I created a simple rails SaaS site using paymill. You can check out the <a href="https://github.com/apalancat/paymill-rails">code on github</a>, or keep reading for more details on using paymill with ruby and rails.</p>
 
-<p>In order to create subscriptions the steps are simple, the only thing needed is a paymill test account.</p>
+<h3>Paymill with ruby</h3>
 
-<p>The paymill control panel lets you create Offers, which are how they call Subscription Plans. Once created, the plans can be used to subscribe clients via the API. The names beginning with &#8216;offer_&#8217; are the plan IDs that will be needed to setup the subscription with a client and credit card.</p>
+<p>We&#8217;ll be using the <code>paymill-ruby</code> gem (<a href="https://github.com/dkd/paymill-ruby">github</a>), a ruby wrapper for the Paymill API. Right now it&#8217;s in a very early stage, but it works fine for the basics.
+To install it: <code>gem install paymill</code>.</p>
 
-<p>Check out the <a href="https://github.com/apalancat/paymill-rails">sample app</a> if you want to give it a try.</p>
+<p>The steps for accepting payments are very simple.
+First, create a paymill account and get the test API keys in &#8220;My Account -> Settings&#8221;. The public key is used to generate credit card tokens via paymill&#8217;s javascript bridge. For our testing, we&#8217;ll use a basic html form to get valid tokens (live demo <a href="/downloads/code/paymill_token.html">here</a>):</p>
+
+<div><script src='https://gist.github.com/4240886.js?file='></script>
+<noscript><pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var PAYMILL_PUBLIC_KEY = 'your_public_paymill_key';
+    &lt;/script&gt;
+    &lt;script src=&quot;http://code.jquery.com/jquery-latest.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;https://bridge.paymill.com/&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        $(document).ready(function () {
+          function PaymillResponseHandler(error, result) {
+              if (error) {
+                  $(&quot;.payment-errors&quot;).text(error.apierror);
+              } else {
+                  $(&quot;.payment-errors&quot;).text(&quot;&quot;);
+                  $(&quot;.payment-token&quot;).text(&quot;Token: &quot;+result.token);
+              }
+          }
+          $(&quot;#payment-form&quot;).submit(function (event) {
+              PAYMILL_PUBLIC_KEY = $('.paymill-key').val();
+              paymill.createToken({
+                  number:$('.card-number').val(),
+                  exp_month:$('.card-expiry-month').val(),
+                  exp_year:$('.card-expiry-year').val(),
+                  cvc:$('.card-cvc').val(),
+                  cardholdername:$('.card-holdername').val(),
+                  currency:'EUR',
+                  amount:'100'
+              }, PaymillResponseHandler);
+              return false;
+          });
+          $('.paymill-key').val(PAYMILL_PUBLIC_KEY);
+        });
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Paymill Tokens&lt;/h1&gt;
+&lt;form id=&quot;payment-form&quot; action=&quot;request.php&quot; method=&quot;POST&quot;&gt;
+    &lt;div class=&quot;form-row&quot;&gt;&lt;label&gt;Paymill Public Key&lt;/label&gt;
+        &lt;input class=&quot;paymill-key&quot; type=&quot;text&quot; size=&quot;45&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-row&quot;&gt;&lt;label&gt;Card number&lt;/label&gt;
+        &lt;input class=&quot;card-number&quot; type=&quot;text&quot; size=&quot;20&quot; value=&quot;4111111111111111&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-row&quot;&gt;&lt;label&gt;CVC&lt;/label&gt;
+        &lt;input class=&quot;card-cvc&quot; type=&quot;text&quot; size=&quot;4&quot; value=&quot;111&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-row&quot;&gt;&lt;label&gt;Cardholder name&lt;/label&gt;
+        &lt;input class=&quot;card-holdername&quot; type=&quot;text&quot; size=&quot;20&quot; value=&quot;John Doe&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-row&quot;&gt;&lt;label&gt;Expiration date (MM/YYYY)&lt;/label&gt;
+        &lt;input class=&quot;card-expiry-month&quot; type=&quot;text&quot; size=&quot;2&quot; value=&quot;12&quot;/&gt;
+        &lt;span&gt; / &lt;/span&gt;
+        &lt;input class=&quot;card-expiry-year&quot; type=&quot;text&quot; size=&quot;4&quot; value=&quot;2015&quot;/&gt;
+    &lt;/div&gt;
+    &lt;button class=&quot;submit-button&quot; type=&quot;submit&quot;&gt;Get token&lt;/button&gt;
+&lt;/form&gt;
+&lt;div class=&quot;payment-token&quot; style=&quot;color:green;&quot;&gt;Token:&lt;/div&gt;
+&lt;div class=&quot;payment-errors&quot; style=&quot;color:red;&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></noscript></div>
+
+
+<p>Each time we submit the form paymill gives us a new token that we can use in the terminal to do our testing. Tokens are strings beginning with <code>tok_</code> and are only valid for a single transaction.</p>
+
+<p>Once we have the token supply we can now fire up <code>irb</code> and start testing the API.
+For example, making a 10€ transaction with the description &#8220;Testing paymill-ruby&#8221;:</p>
+
+<figure class='code'><figcaption><span>creating a 10€ transaction</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;paymill&#39;</span>
+</span><span class='line'><span class="no">Paymill</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;your_private_paymill_key&quot;</span> <span class="c1"># private key from paymill settings</span>
+</span><span class='line'><span class="no">Paymill</span><span class="o">::</span><span class="no">Transaction</span><span class="o">.</span><span class="n">create</span> <span class="n">amount</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">currency</span><span class="ss">:&#39;EUR&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="s1">&#39;tok_c05cfc4f1e1b8a7cf1f5&#39;</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="s1">&#39;Testing paymill-ruby&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hopefully the transaction will appear immediately in our paymill Dashboard. For more information about what is possible with the API and the gem, check out the <a href="https://www.paymill.com/en-gb/documentation-3/reference/api-reference/index.html">Paymill API Reference</a> and the <code>paymill-ruby</code> <a href="https://github.com/dkd/paymill-ruby">source code</a> and documentation.</p>
+
+<h3>Subscriptions</h3>
+
+<p>The paymill control panel lets you create Offers, which are how Subscription Plans are called in paymill. Once created, the plans can be used to subscribe clients via the API.
+Offers have names beginning with <code>offer_</code>. These are the plan IDs that will be needed to setup the subscription with a client and credit card.</p>
+
+<figure class='code'><figcaption><span>creating a subscription</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">client</span> <span class="o">=</span> <span class="no">Paymill</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">create</span> <span class="n">email</span><span class="p">:</span> <span class="s1">&#39;test@example.com&#39;</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="s1">&#39;Subscription test&#39;</span>
+</span><span class='line'><span class="n">payment</span> <span class="o">=</span> <span class="no">Paymill</span><span class="o">::</span><span class="no">Payment</span><span class="o">.</span><span class="n">create</span> <span class="n">token</span><span class="p">:</span> <span class="s1">&#39;tok_2cf2314e1c619b588668&#39;</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">client</span><span class="o">.</span><span class="n">id</span>
+</span><span class='line'><span class="no">Paymill</span><span class="o">::</span><span class="no">Subscription</span><span class="o">.</span><span class="n">create</span> <span class="n">offer</span><span class="p">:</span> <span class="s1">&#39;offer_20b8398c8d06e697bd1a&#39;</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">client</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">payment</span><span class="p">:</span> <span class="n">payment</span><span class="o">.</span><span class="n">id</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Rails app</h3>
+
+<p>Integrating paymill subscriptions in a rails app is simple. I created a <a href="https://github.com/apalancat/paymill-rails">sample app</a> based on
+Railscast #288 <a href="http://railscasts.com/episodes/288-billing-with-stripe">Billing with stripe</a> (<a href="https://github.com/railscasts/288-billing-with-stripe">code</a>), but since the APIs are very similar it shouldn&#8217;t be difficult to convert some other stripe-based site.</p>
 </div>
   
   
@@ -264,7 +364,7 @@ To install it: <code>gem install paymill</code></p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Marc -
+  Copyright &copy; 2012 - Marc Boquet -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

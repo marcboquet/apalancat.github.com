@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="robots" content="noindex">
+    <script type="text/javascript">
+        var PAYMILL_PUBLIC_KEY = 'your_public_paymill_key';
+    </script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://bridge.paymill.com/"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+          function PaymillResponseHandler(error, result) {
+              if (error) {
+                  $(".payment-errors").text(error.apierror);
+              } else {
+                  $(".payment-errors").text("");
+                  $(".payment-token").text("Token: "+result.token);
+              }
+          }
+          $("#payment-form").submit(function (event) {
+              PAYMILL_PUBLIC_KEY = $('.paymill-key').val();
+              paymill.createToken({
+                  number:$('.card-number').val(),
+                  exp_month:$('.card-expiry-month').val(),
+                  exp_year:$('.card-expiry-year').val(),
+                  cvc:$('.card-cvc').val(),
+                  cardholdername:$('.card-holdername').val(),
+                  currency:'EUR',
+                  amount:'100'
+              }, PaymillResponseHandler);
+              return false;
+          });
+          $('.paymill-key').val(PAYMILL_PUBLIC_KEY);
+        });
+    </script>
+</head>
+<body>
+<h1>Paymill Tokens</h1>
+<form id="payment-form" action="request.php" method="POST">
+    <div class="form-row"><label>Paymill Public Key</label>
+        <input class="paymill-key" type="text" size="45"/>
+    </div>
+    <div class="form-row"><label>Card number</label>
+        <input class="card-number" type="text" size="20" value="4111111111111111"/>
+    </div>
+    <div class="form-row"><label>CVC</label>
+        <input class="card-cvc" type="text" size="4" value="111"/>
+    </div>
+    <div class="form-row"><label>Cardholder name</label>
+        <input class="card-holdername" type="text" size="20" value="John Doe"/>
+    </div>
+    <div class="form-row"><label>Expiration date (MM/YYYY)</label>
+        <input class="card-expiry-month" type="text" size="2" value="12"/>
+        <span> / </span>
+        <input class="card-expiry-year" type="text" size="4" value="2015"/>
+    </div>
+    <button class="submit-button" type="submit">Get token</button>
+</form>
+<div class="payment-token" style="color:green;">Token:</div>
+<div class="payment-errors" style="color:red;"></div>
+</body>
+</html>
